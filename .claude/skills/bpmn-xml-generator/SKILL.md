@@ -1,5 +1,5 @@
 ---
-name: bpmn-authoring
+name: bpmn-xml-generator
 description: >
   Generate well-formed, valid BPMN 2.0 XML files compatible with BPMN 2.0-compliant process engines.
   Use this skill whenever the user asks to create, write, design, model, or define a business process,
@@ -125,7 +125,7 @@ CMMN, Choreography, Conversation, DataStore, Association (rendered only).
                       http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
   id="Definitions_{process-key}"
   targetNamespace="http://bpmn.io/schema/bpmn" <!-- any valid URI; this value is not used by the engine -->
-  exporter="bpmn-authoring"
+  exporter="bpmn-xml-generator"
   exporterVersion="1.0">
 
   <process id="{process-key}" name="{Process Name}" isExecutable="true">

@@ -1,4 +1,4 @@
-# bpmn-authoring
+# bpmn-xml-generator
 
 A [Claude Code](https://claude.ai/code) skill that generates valid BPMN 2.0 XML files from plain-language descriptions. Describe a business process in natural language and get production-ready XML compatible with any `bpmn-moddle`-based process engine (Camunda, Flowable, and compatible engines).
 
@@ -29,28 +29,28 @@ When installed, this skill activates automatically whenever you ask Claude Code 
 Run from the **root of your project**:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-authoring-skill/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | sh
 ```
 
-The skill is installed into `.claude/skills/bpmn-authoring/` inside your project. Restart Claude Code (or start a new session) to activate it.
+The skill is installed into `.claude/skills/bpmn-xml-generator/` inside your project. Restart Claude Code (or start a new session) to activate it.
 
 ### Global installation
 
 To make the skill available in **all your projects**:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-authoring-skill/main/install.sh | GLOBAL=1 sh
+curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | GLOBAL=1 sh
 ```
 
-This installs to `~/.claude/skills/bpmn-authoring/`.
+This installs to `~/.claude/skills/bpmn-xml-generator/`.
 
 ### Manual installation
 
 Clone the repository and copy the skill directory into your project:
 
 ```sh
-git clone https://github.com/samueldc/bpmn-authoring-skill.git
-cp -r bpmn-authoring-skill/.claude/skills/bpmn-authoring .claude/skills/
+git clone https://github.com/samueldc/bpmn-xml-generator.git
+cp -r bpmn-xml-generator/.claude/skills/bpmn-xml-generator .claude/skills/
 ```
 
 ---
@@ -100,7 +100,7 @@ senior analyst if not completed in time.
 
 ## How the skill works
 
-The skill is defined in `.claude/skills/bpmn-authoring/SKILL.md` and loads additional reference files on demand:
+The skill is defined in `.claude/skills/bpmn-xml-generator/SKILL.md` and loads additional reference files on demand:
 
 | File | Purpose |
 |---|---|
@@ -117,8 +117,8 @@ Issues and pull requests are welcome.
 
 ### Reporting a bug or requesting a feature
 
-1. Check [existing issues](https://github.com/samueldc/bpmn-authoring-skill/issues) to avoid duplicates.
-2. Open a [new issue](https://github.com/samueldc/bpmn-authoring-skill/issues/new) with:
+1. Check [existing issues](https://github.com/samueldc/bpmn-xml-generator/issues) to avoid duplicates.
+2. Open a [new issue](https://github.com/samueldc/bpmn-xml-generator/issues/new) with:
    - A clear title describing the problem or request.
    - For bugs: the prompt you used, the XML output, and the error (parse or engine error message).
    - For feature requests: the BPMN pattern or element you need and a concrete example.
@@ -126,7 +126,7 @@ Issues and pull requests are welcome.
 ### Submitting a pull request
 
 1. Fork the repository and create a branch from `main`.
-2. Make your changes to the skill files under `.claude/skills/bpmn-authoring/`.
+2. Make your changes to the skill files under `.claude/skills/bpmn-xml-generator/`.
 3. Verify that any new XML snippets are valid BPMN 2.0 (parseable by `bpmn-moddle`).
 4. Open a pull request with a description of what changed and why.
 

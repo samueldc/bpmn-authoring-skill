@@ -1,22 +1,22 @@
 #!/bin/sh
-# install.sh — installs the bpmn-authoring Claude Code skill into the current project.
+# install.sh — installs the bpmn-xml-generator Claude Code skill into the current project.
 #
 # Usage (run from your project root):
-#   curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-authoring-skill/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | sh
 #
 # To install globally (available in all projects):
-#   curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-authoring-skill/main/install.sh | GLOBAL=1 sh
+#   curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | GLOBAL=1 sh
 
 set -e
 
-REPO="samueldc/bpmn-authoring-skill"
+REPO="samueldc/bpmn-xml-generator"
 BRANCH="main"
-BASE_URL="https://raw.githubusercontent.com/${REPO}/${BRANCH}/.claude/skills/bpmn-authoring"
+BASE_URL="https://raw.githubusercontent.com/${REPO}/${BRANCH}/.claude/skills/bpmn-xml-generator"
 
 if [ "${GLOBAL:-0}" = "1" ]; then
-  DEST="${HOME}/.claude/skills/bpmn-authoring"
+  DEST="${HOME}/.claude/skills/bpmn-xml-generator"
 else
-  DEST=".claude/skills/bpmn-authoring"
+  DEST=".claude/skills/bpmn-xml-generator"
 fi
 
 # ---------------------------------------------------------------------------
@@ -34,7 +34,7 @@ fi
 # ---------------------------------------------------------------------------
 # Install
 # ---------------------------------------------------------------------------
-printf 'Installing bpmn-authoring skill to %s\n' "$DEST"
+printf 'Installing bpmn-xml-generator skill to %s\n' "$DEST"
 
 mkdir -p "$DEST/references"
 

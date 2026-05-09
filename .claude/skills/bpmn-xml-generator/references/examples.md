@@ -21,7 +21,7 @@ Four complete, valid BPMN 2.0 XML files ready to be uploaded via `POST /v1/defin
                       http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
   id="Definitions_simple-approval"
   targetNamespace="http://bpmn.io/schema/bpmn"
-  exporter="bpmn-authoring"
+  exporter="bpmn-xml-generator"
   exporterVersion="1.0">
 
   <process id="simple-approval" name="Simple Approval" isExecutable="true">
@@ -135,7 +135,7 @@ Four complete, valid BPMN 2.0 XML files ready to be uploaded via `POST /v1/defin
                       http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
   id="Definitions_customer-onboarding"
   targetNamespace="http://bpmn.io/schema/bpmn"
-  exporter="bpmn-authoring"
+  exporter="bpmn-xml-generator"
   exporterVersion="1.0">
 
   <process id="customer-onboarding" name="Customer Onboarding" isExecutable="true">
@@ -247,7 +247,7 @@ Four complete, valid BPMN 2.0 XML files ready to be uploaded via `POST /v1/defin
                       http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
   id="Definitions_order-fulfillment"
   targetNamespace="http://bpmn.io/schema/bpmn"
-  exporter="bpmn-authoring"
+  exporter="bpmn-xml-generator"
   exporterVersion="1.0">
 
   <message id="msg_payment_confirmed" name="payment_confirmed"/>
@@ -339,7 +339,7 @@ Four complete, valid BPMN 2.0 XML files ready to be uploaded via `POST /v1/defin
                       http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
   id="Definitions_loan-application"
   targetNamespace="http://bpmn.io/schema/bpmn"
-  exporter="bpmn-authoring"
+  exporter="bpmn-xml-generator"
   exporterVersion="1.0">
 
   <process id="loan-application" name="Loan Application" isExecutable="true">

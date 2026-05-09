@@ -6,12 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a **Claude Code skill** for generating valid BPMN 2.0 XML files compatible with BPMN 2.0-compliant process engines. It has no build system, test runner, or application code — it is entirely documentation and skill configuration.
 
-The skill is registered at `.claude/skills/bpmn-authoring/` and is invoked automatically when users ask to create, model, or convert a business process or BPMN diagram.
+The skill is registered at `.claude/skills/bpmn-xml-generator/` and is invoked automatically when users ask to create, model, or convert a business process or BPMN diagram.
 
 ## File structure
 
 ```
-.claude/skills/bpmn-authoring/
+.claude/skills/bpmn-xml-generator/
   SKILL.md                        # Entry point: skill frontmatter + all authoring rules
   references/
     elements.md                   # Full attribute reference for every supported element
