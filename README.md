@@ -1,6 +1,6 @@
 # bpmn-xml-generator
 
-A [Claude Code](https://claude.ai/code) skill that generates valid BPMN 2.0 XML files from plain-language descriptions. Describe a business process in natural language and get production-ready XML compatible with any `bpmn-moddle`-based process engine (Camunda, Flowable, and compatible engines).
+A skill for [Claude Code](https://claude.ai/code) and [Cline](https://cline.bot) that generates valid BPMN 2.0 XML files from plain-language descriptions. Describe a business process in natural language and get production-ready XML compatible with any `bpmn-moddle`-based process engine (Camunda, Flowable, and compatible engines).
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
@@ -8,7 +8,7 @@ A [Claude Code](https://claude.ai/code) skill that generates valid BPMN 2.0 XML 
 
 ## What it does
 
-When installed, this skill activates automatically whenever you ask Claude Code to create, model, design, or fix a BPMN process. It:
+When installed, this skill activates automatically whenever you ask Claude Code or Cline to create, model, design, or fix a BPMN process. It:
 
 - **Gathers information before writing** — asks for missing details (assignees, conditions, variable names) in a single focused question rather than generating incomplete XML.
 - **Produces schema-valid XML** — output is parseable by `bpmn-moddle` without errors.
@@ -17,41 +17,64 @@ When installed, this skill activates automatically whenever you ask Claude Code 
 
 ---
 
+## Compatibility
+
+| Tool | Supported | Notes |
+|---|---|---|
+| [Claude Code](https://claude.ai/code) | ✓ | Default install path `.claude/skills/` |
+| [Cline](https://cline.bot) | ✓ | Supports `.claude/skills/` and `.cline/skills/` |
+
+The default installation path (`.claude/skills/`) is recognised by both tools, so a single install covers both.
+
+---
+
 ## Requirements
 
-- [Claude Code](https://claude.ai/code) (CLI, IDE extension, or web)
-- A Claude subscription that supports skills
+- Claude Code or Cline
+- A Claude subscription (or compatible LLM configured in Cline)
 
 ---
 
 ## Installation
 
-Run from the **root of your project**:
+Run from the **root of your project**.
+
+### Claude Code and Cline (shared path — recommended)
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | sh
 ```
 
-The skill is installed into `.claude/skills/bpmn-xml-generator/` inside your project. Restart Claude Code (or start a new session) to activate it.
+Installs to `.claude/skills/bpmn-xml-generator/`, which is recognised by both Claude Code and Cline.
+
+### Cline native path
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | TARGET=cline sh
+```
+
+Installs to `.cline/skills/bpmn-xml-generator/`.
 
 ### Global installation
 
-To make the skill available in **all your projects**:
+Makes the skill available in all your projects.
 
 ```sh
+# Shared path (Claude Code + Cline)
 curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | GLOBAL=1 sh
+
+# Cline native global path
+curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-xml-generator/main/install.sh | GLOBAL=1 TARGET=cline sh
 ```
 
-This installs to `~/.claude/skills/bpmn-xml-generator/`.
-
 ### Manual installation
-
-Clone the repository and copy the skill directory into your project:
 
 ```sh
 git clone https://github.com/samueldc/bpmn-xml-generator.git
 cp -r bpmn-xml-generator/.claude/skills/bpmn-xml-generator .claude/skills/
 ```
+
+Restart Claude Code or Cline (or start a new session) to activate the skill.
 
 ---
 
