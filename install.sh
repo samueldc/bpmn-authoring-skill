@@ -1,0 +1,53 @@
+#!/bin/sh
+# install.sh — installs the bpmn-authoring Claude Code skill into the current project.
+#
+# Usage (run from your project root):
+#   curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-authoring-skill/main/install.sh | sh
+#
+# To install globally (available in all projects):
+#   curl -fsSL https://raw.githubusercontent.com/samueldc/bpmn-authoring-skill/main/install.sh | GLOBAL=1 sh
+
+set -e
+
+REPO="samueldc/bpmn-authoring-skill"
+BRANCH="main"
+BASE_URL="https://raw.githubusercontent.com/${REPO}/${BRANCH}/.claude/skills/bpmn-authoring"
+
+if [ "${GLOBAL:-0}" = "1" ]; then
+  DEST="${HOME}/.claude/skills/bpmn-authoring"
+else
+  DEST=".claude/skills/bpmn-authoring"
+fi
+
+# ---------------------------------------------------------------------------
+# Detect download tool
+# ---------------------------------------------------------------------------
+if command -v curl > /dev/null 2>&1; then
+  fetch() { curl -fsSL "$1" -o "$2"; }
+elif command -v wget > /dev/null 2>&1; then
+  fetch() { wget -q -O "$2" "$1"; }
+else
+  printf 'Error: curl or wget is required.\n' >&2
+  exit 1
+fi
+
+# ---------------------------------------------------------------------------
+# Install
+# ---------------------------------------------------------------------------
+printf 'Installing bpmn-authoring skill to %s\n' "$DEST"
+
+mkdir -p "$DEST/references"
+
+fetch "$BASE_URL/SKILL.md"                        "$DEST/SKILL.md"
+printf '  [ok] SKILL.md\n'
+
+fetch "$BASE_URL/references/elements.md"          "$DEST/references/elements.md"
+printf '  [ok] references/elements.md\n'
+
+fetch "$BASE_URL/references/examples.md"          "$DEST/references/examples.md"
+printf '  [ok] references/examples.md\n'
+
+fetch "$BASE_URL/references/validation-errors.md" "$DEST/references/validation-errors.md"
+printf '  [ok] references/validation-errors.md\n'
+
+printf '\nDone. Restart Claude Code (or start a new session) to activate the skill.\n'
