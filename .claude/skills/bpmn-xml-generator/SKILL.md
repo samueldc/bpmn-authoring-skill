@@ -56,6 +56,7 @@ Key facts that govern every file you generate:
 - [ ] **Variable names** — what process variables are used? (needed for expressions and `dataInputAssociation`)
 - [ ] **Data visibility** — for each `userTask`, which variables should the frontend see? (maps to `dataInput`/`dataOutput` in `ioSpecification`)
 - [ ] **Process-level variables** — are there default/initial variable values?
+- [ ] **Diagram layout** — do you want the output to include a visual layout (`BPMNDiagram` section), required by tools like bpmn.io? If yes, `bpmn-auto-layout` will be run automatically after saving (requires Node.js ≥ 18 and internet access for `npx`).
 
 ### 1.3 Clarify ambiguity
 
@@ -310,6 +311,38 @@ Before outputting the final XML, verify every item:
 4. Add a brief inline comment above each logical section (START, ACTIVITIES, GATEWAYS, END, FLOWS)
 5. If the file is longer than ~150 lines, offer to also write a summary table of elements and flows
 6. After outputting the XML, remind the user to validate and upload it according to their engine's API.
+7. **If the user requested a diagram layout**, after writing the BPMN file apply layout via the reusable runner at `/tmp/bpmn-layout-runner/layout.mjs`:
+   ```
+   node /tmp/bpmn-layout-runner/layout.mjs <output-file> <output-file>
+   ```
+   If `/tmp/bpmn-layout-runner/` does not exist yet, set it up first:
+   ```
+   mkdir -p /tmp/bpmn-layout-runner && \
+   cd /tmp/bpmn-layout-runner && \
+   npm init -y > /dev/null && \
+   npm install bpmn-auto-layout && \
+   node -e "
+   import { readFileSync, writeFileSync } from 'fs';
+   import { layoutProcess } from 'bpmn-auto-layout';
+   const [,,i,o] = process.argv;
+   writeFileSync(o||i, await layoutProcess(readFileSync(i,'utf8')), 'utf8');
+   console.log('Layout applied.');
+   " > layout.mjs
+   ```
+   Actually: write `layout.mjs` with the Write tool (see below), then run `npm install bpmn-auto-layout` inside `/tmp/bpmn-layout-runner/`.
+
+   **layout.mjs content:**
+   ```js
+   import { readFileSync, writeFileSync } from 'fs';
+   import { layoutProcess } from 'bpmn-auto-layout';
+   const [,, input, output] = process.argv;
+   const xml = readFileSync(input, 'utf8');
+   const layouted = await layoutProcess(xml);
+   writeFileSync(output || input, layouted, 'utf8');
+   console.log('Layout applied successfully.');
+   ```
+
+   This overwrites the file in-place, adding a `<bpmndi:BPMNDiagram>` section with auto-computed shapes and edges. Confirm to the user that layout was applied and the file is ready for bpmn.io.
 
 ---
 

@@ -14,6 +14,7 @@ When installed, this skill activates automatically whenever you ask Claude Code 
 - **Produces schema-valid XML** — output is parseable by `bpmn-moddle` without errors.
 - **Enforces structural correctness** — validates sequence flow connectivity, gateway conditions, timer formats (ISO 8601), and Camunda extension attribute usage before outputting.
 - **Includes copy-paste patterns** — for all common element types: `userTask`, `serviceTask`, `exclusiveGateway`, `parallelGateway`, timer events, boundary events, message correlation, DMN rule tasks, sub-processes, and `callActivity`.
+- **Generates visual diagram layout** — optionally adds a `BPMNDiagram` section (shapes and edges with auto-computed coordinates) so the file opens immediately in [bpmn.io](https://demo.bpmn.io/) and other BPMN editors. Powered by [`bpmn-auto-layout`](https://github.com/bpmn-io/bpmn-auto-layout); requires Node.js ≥ 18.
 
 ---
 
@@ -32,6 +33,7 @@ The default installation path (`.claude/skills/`) is recognised by both tools, s
 
 - Claude Code or Cline
 - A Claude subscription (or compatible LLM configured in Cline)
+- Node.js ≥ 18 *(optional — only required if you want the automatic diagram layout feature)*
 
 ---
 
